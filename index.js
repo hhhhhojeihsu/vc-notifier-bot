@@ -4,7 +4,7 @@ const VARIABLE_DATA_FILE_PATH = 'data/variable_data.json';
 
 const config = require('./config.json');
 
-const DISCORD_BOT_TOKEN = config.get('botToken');
+const DISCORD_BOT_TOKEN = config.botToken;
 
 const Discord = require('discord.js');
 const SimpleVoiceState = require('./SimpleVoiceState');
