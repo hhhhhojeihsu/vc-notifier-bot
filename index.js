@@ -2,7 +2,7 @@ let sigtermReceived = false;
 
 const VARIABLE_DATA_FILE_PATH = 'data/variable_data.json';
 
-const config = require('config');
+const config = require('./config.json');
 
 const DISCORD_BOT_TOKEN = config.get('botToken');
 
