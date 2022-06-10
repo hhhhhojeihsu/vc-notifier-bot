@@ -51,7 +51,7 @@ client.on('ready', async () => {
     const notificationChannel = await client.channels.cache.get(notificationChannelID);
     if (notificationChannel) {
       if (process.argv.indexOf('--no-back-online-message') <= -1) {
-        await notificationChannel.send(BACK_ONLINE_MESSAGE);
+        // await notificationChannel.send(BACK_ONLINE_MESSAGE);
       }
       if (process.argv.indexOf('--new-release') > -1 && sentNewVersionFeaturesMessage === false) {
         await notificationChannel.send(NEW_VERSION_FEATURES.join('\n'));
@@ -88,7 +88,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
     const channelAfter = getChannelData(guildID, channelID).copy();
 
     if (!memberBot && hasJoinedChannel(memberID, channelBefore, channelAfter)) {
-      const message = `${memberDisplayNames[memberID]} has joined voice chat ${channelDisplayNames[channelID]}.`;
+      const message = `${memberDisplayNames[memberID]} has joined ${channelDisplayNames[channelID]}.`;
       await notifyMembers(message, guildID, { omittedMemberID: memberID, isJoin: true });
     }
   } else {
@@ -101,9 +101,9 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
     removeMemberFromChannel(guildID, channelID, memberID);
     const channelAfter = getChannelData(guildID, channelID).copy();
 
-    if (!memberBot && hasLeftChannel(memberID, channelBefore, channelAfter)) {
-      const message = `${memberDisplayNames[memberID]} has left voice chat ${channelDisplayNames[channelID]}.`;
-      notifyMembers(message, guildID, { omittedMemberID: memberID, isJoin: false });
+    // if (!memberBot && hasLeftChannel(memberID, channelBefore, channelAfter)) {
+    //   const message = `${memberDisplayNames[memberID]} has left voice chat ${channelDisplayNames[channelID]}.`;
+    //   notifyMembers(message, guildID, { omittedMemberID: memberID, isJoin: false });
     }
   }
 
@@ -215,9 +215,9 @@ process.on('SIGTERM', () => {
     VARIABLE_DATA_FILE_PATH
   );
 
-  Object.values(guildNotificationChannels).forEach((notificationChannel) => {
-    client.channels.cache.get(notificationChannel).send(TEMPORARILY_GOING_OFFLINE_MESSAGE);
-  });
+  // Object.values(guildNotificationChannels).forEach((notificationChannel) => {
+  //   client.channels.cache.get(notificationChannel).send(TEMPORARILY_GOING_OFFLINE_MESSAGE);
+  // });
 
   sigtermReceived = true;
 });
