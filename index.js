@@ -104,7 +104,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
     // if (!memberBot && hasLeftChannel(memberID, channelBefore, channelAfter)) {
     //   const message = `${memberDisplayNames[memberID]} has left voice chat ${channelDisplayNames[channelID]}.`;
     //   notifyMembers(message, guildID, { omittedMemberID: memberID, isJoin: false });
-    }
+    // }
   }
 
   saveVariableDataToFile(
